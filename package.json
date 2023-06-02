@@ -2,12 +2,19 @@
   "name": "token-generator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsc",
+    "start": "node dist/server.js",
+    "dev": "npx tsc --watch"
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.8.14",
+    "@grpc/proto-loader": "^0.7.7"
+  },
   "devDependencies": {
     "typescript": "^5.1.3"
   }
