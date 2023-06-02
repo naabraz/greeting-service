@@ -1,3 +1,3 @@
-import { sum } from './src/sum.js';
+import { sayHello } from './src/sayHello.js';
 
-console.log(sum(10, 10));
+console.log(sayHello('Natalia'));
