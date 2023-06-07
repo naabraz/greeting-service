@@ -5,7 +5,7 @@
   "main": "server.ts",
   "scripts": {
     "build": "npx tsc",
-    "server": "npx ts-node server.ts",
+    "start": "npx ts-node server.ts",
     "client": "npx ts-node client.ts"
   },
   "author": "",
