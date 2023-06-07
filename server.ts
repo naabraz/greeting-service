@@ -10,7 +10,7 @@ const sayHello = (
   call: ServerUnaryCall<HelloRequest, HelloReply>,
   callback: sendUnaryData<HelloReply>
 ) => {
-  const message: HelloReply = { message: 'Hi!' };
+  const message: HelloReply = { message: `Hi ${call.request.name}!` };
 
   callback(null, message);
 };

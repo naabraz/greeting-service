@@ -6,8 +6,12 @@ const client = new GreeterClient(
   credentials.createInsecure()
 );
 
+const greetingRequest: HelloRequest = {
+  name: 'Natalia',
+};
+
 client.sayHello(
-  { name: 'Natalia' },
+  greetingRequest,
   (err: ServiceError | null, response: HelloReply) => {
     console.log(JSON.stringify(response));
   }
