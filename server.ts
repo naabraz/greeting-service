@@ -11,6 +11,10 @@ const sayHello = (
   call: ServerUnaryCall<GreeterRequest, GretterReply>,
   callback: sendUnaryData<GretterReply>
 ) => {
+  const name = call.request.name;
+
+  console.log(`Saying hello to ${name}`);
+
   const message: GretterReply = { message: `Hi ${call.request.name}!` };
 
   callback(null, message);
