@@ -5,8 +5,8 @@
   "main": "server.ts",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/server.js",
-    "dev": "npx tsc --watch"
+    "server": "npx ts-node server.ts",
+    "client": "npx ts-node client.ts"
   },
   "author": "",
   "license": "ISC",

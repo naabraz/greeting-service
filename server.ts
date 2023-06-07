@@ -4,13 +4,14 @@ import {
   ServerUnaryCall,
   sendUnaryData,
 } from '@grpc/grpc-js';
-import { GreeterService, HelloReply, HelloRequest } from './proto/greeting';
+
+import { GreeterService, GreeterRequest, GretterReply } from './proto/greeting';
 
 const sayHello = (
-  call: ServerUnaryCall<HelloRequest, HelloReply>,
-  callback: sendUnaryData<HelloReply>
+  call: ServerUnaryCall<GreeterRequest, GretterReply>,
+  callback: sendUnaryData<GretterReply>
 ) => {
-  const message: HelloReply = { message: `Hi ${call.request.name}!` };
+  const message: GretterReply = { message: `Hi ${call.request.name}!` };
 
   callback(null, message);
 };

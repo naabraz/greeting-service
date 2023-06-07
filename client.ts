@@ -1,18 +1,19 @@
 import { ServiceError, credentials } from '@grpc/grpc-js';
-import { GreeterClient, HelloReply, HelloRequest } from './proto/greeting';
+
+import { GreeterClient, GretterReply, GreeterRequest } from './proto/greeting';
 
 const client = new GreeterClient(
   'localhost:8080',
   credentials.createInsecure()
 );
 
-const greetingRequest: HelloRequest = {
+const greetingRequest: GreeterRequest = {
   name: 'Natalia',
 };
 
 client.sayHello(
   greetingRequest,
-  (err: ServiceError | null, response: HelloReply) => {
+  (err: ServiceError | null, response: GretterReply) => {
     console.log(JSON.stringify(response));
   }
 );

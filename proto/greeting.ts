@@ -15,30 +15,30 @@ import _m0 from "protobufjs/minimal";
 
 export const protobufPackage = "greeter";
 
-export interface HelloRequest {
+export interface GreeterRequest {
   name: string;
 }
 
-export interface HelloReply {
+export interface GretterReply {
   message: string;
 }
 
-function createBaseHelloRequest(): HelloRequest {
+function createBaseGreeterRequest(): GreeterRequest {
   return { name: "" };
 }
 
-export const HelloRequest = {
-  encode(message: HelloRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const GreeterRequest = {
+  encode(message: GreeterRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): HelloRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GreeterRequest {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseHelloRequest();
+    const message = createBaseGreeterRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -58,43 +58,43 @@ export const HelloRequest = {
     return message;
   },
 
-  fromJSON(object: any): HelloRequest {
+  fromJSON(object: any): GreeterRequest {
     return { name: isSet(object.name) ? String(object.name) : "" };
   },
 
-  toJSON(message: HelloRequest): unknown {
+  toJSON(message: GreeterRequest): unknown {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<HelloRequest>, I>>(base?: I): HelloRequest {
-    return HelloRequest.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<GreeterRequest>, I>>(base?: I): GreeterRequest {
+    return GreeterRequest.fromPartial(base ?? {});
   },
 
-  fromPartial<I extends Exact<DeepPartial<HelloRequest>, I>>(object: I): HelloRequest {
-    const message = createBaseHelloRequest();
+  fromPartial<I extends Exact<DeepPartial<GreeterRequest>, I>>(object: I): GreeterRequest {
+    const message = createBaseGreeterRequest();
     message.name = object.name ?? "";
     return message;
   },
 };
 
-function createBaseHelloReply(): HelloReply {
+function createBaseGretterReply(): GretterReply {
   return { message: "" };
 }
 
-export const HelloReply = {
-  encode(message: HelloReply, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const GretterReply = {
+  encode(message: GretterReply, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.message !== "") {
       writer.uint32(10).string(message.message);
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): HelloReply {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GretterReply {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseHelloReply();
+    const message = createBaseGretterReply();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -114,22 +114,22 @@ export const HelloReply = {
     return message;
   },
 
-  fromJSON(object: any): HelloReply {
+  fromJSON(object: any): GretterReply {
     return { message: isSet(object.message) ? String(object.message) : "" };
   },
 
-  toJSON(message: HelloReply): unknown {
+  toJSON(message: GretterReply): unknown {
     const obj: any = {};
     message.message !== undefined && (obj.message = message.message);
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<HelloReply>, I>>(base?: I): HelloReply {
-    return HelloReply.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<GretterReply>, I>>(base?: I): GretterReply {
+    return GretterReply.fromPartial(base ?? {});
   },
 
-  fromPartial<I extends Exact<DeepPartial<HelloReply>, I>>(object: I): HelloReply {
-    const message = createBaseHelloReply();
+  fromPartial<I extends Exact<DeepPartial<GretterReply>, I>>(object: I): GretterReply {
+    const message = createBaseGretterReply();
     message.message = object.message ?? "";
     return message;
   },
@@ -141,32 +141,32 @@ export const GreeterService = {
     path: "/greeter.Greeter/SayHello",
     requestStream: false,
     responseStream: false,
-    requestSerialize: (value: HelloRequest) => Buffer.from(HelloRequest.encode(value).finish()),
-    requestDeserialize: (value: Buffer) => HelloRequest.decode(value),
-    responseSerialize: (value: HelloReply) => Buffer.from(HelloReply.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => HelloReply.decode(value),
+    requestSerialize: (value: GreeterRequest) => Buffer.from(GreeterRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => GreeterRequest.decode(value),
+    responseSerialize: (value: GretterReply) => Buffer.from(GretterReply.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => GretterReply.decode(value),
   },
 } as const;
 
 export interface GreeterServer extends UntypedServiceImplementation {
-  sayHello: handleUnaryCall<HelloRequest, HelloReply>;
+  sayHello: handleUnaryCall<GreeterRequest, GretterReply>;
 }
 
 export interface GreeterClient extends Client {
   sayHello(
-    request: HelloRequest,
-    callback: (error: ServiceError | null, response: HelloReply) => void,
+    request: GreeterRequest,
+    callback: (error: ServiceError | null, response: GretterReply) => void,
   ): ClientUnaryCall;
   sayHello(
-    request: HelloRequest,
+    request: GreeterRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: HelloReply) => void,
+    callback: (error: ServiceError | null, response: GretterReply) => void,
   ): ClientUnaryCall;
   sayHello(
-    request: HelloRequest,
+    request: GreeterRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: HelloReply) => void,
+    callback: (error: ServiceError | null, response: GretterReply) => void,
   ): ClientUnaryCall;
 }
 
